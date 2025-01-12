@@ -1,0 +1,30 @@
+.page {
+    flex: 1;
+    display: flex;
+}
+
+.flex {
+    display: flex;
+}
+
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mr-1 {
+    margin-right: .5rem;
+}
+
+.ml-1 {
+    margin-left: .5rem;
+}
+
+.mt-1 {
+    margin-top: .5rem;
+}
+
+.mb-1 {
+    margin-bottom: .5rem;
+}
