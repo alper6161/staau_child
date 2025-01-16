@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import Glide from "@glidejs/glide";
 import book1 from "../assets/images/ex.jpg";
 import book2 from "../assets/images/ex2.jpg";
+import {Button} from "@mui/material";
+import {PlayCircle, RunCircleRounded, Watch} from "@mui/icons-material";
 
 
 const Carousel = () => {
@@ -28,6 +30,17 @@ const Carousel = () => {
 
     return (
         <div className={`glide`}>
+            <div className="carousel-watch-button">
+                <Button
+                    variant="contained"
+                    color="primary"
+                    size="large"
+                    sx={{ fontWeight: "bold" }}
+                    startIcon={<PlayCircle className="mr-1" style={{fontSize: '2rem'}}/>}
+                >
+                    Watch
+                </Button>
+            </div>
             <div className="glide__track" data-glide-el="track">
                 <ul className="glide__slides">
                     <li className="glide__slide">
