@@ -1,0 +1,67 @@
+import React, { useEffect } from "react";
+import Glide from "@glidejs/glide";
+import miniImg1 from "../assets/images/ex.jpg";
+import miniImg2 from "../assets/images/ex2.jpg";
+import miniImg3 from "../assets/images/ex3.jpg";
+import miniImg4 from "../assets/images/ex4.jpg";
+import miniImg5 from "../assets/images/ex5.jpg";
+
+const MiniCarousel = ({id}) => {
+    useEffect(() => {
+        const glide = new Glide(`#${id}`, {
+            type: "carousel",
+            perView: 5,
+            focusAt: "center",
+            gap: 10,
+            breakpoints: {
+                1200: {
+                    perView: 4,
+                },
+                800: {
+                    perView: 3,
+                },
+                480: {
+                    perView: 2,
+                },
+            },
+        });
+
+        glide.mount();
+    }, []);
+
+    return (
+        <div id={id} className="mini-glide">
+            <div className="glide__track" data-glide-el="track">
+                <ul className="glide__slides">
+                    <li className="glide__slide">
+                        <img src={miniImg1} alt="Mini 1" />
+                    </li>
+                    <li className="glide__slide">
+                        <img src={miniImg2} alt="Mini 2" />
+                    </li>
+                    <li className="glide__slide">
+                        <img src={miniImg3} alt="Mini 3" />
+                    </li>
+                    <li className="glide__slide">
+                        <img src={miniImg4} alt="Mini 4" />
+                    </li>
+                    <li className="glide__slide">
+                        <img src={miniImg5} alt="Mini 5" />
+                    </li>
+                </ul>
+            </div>
+
+            {/* Yön Okları */}
+            <div className="glide__arrows" data-glide-el="controls">
+                <button className="glide__arrow glide__arrow--left" data-glide-dir="<">
+                    «
+                </button>
+                <button className="glide__arrow glide__arrow--right" data-glide-dir=">">
+                    »
+                </button>
+            </div>
+        </div>
+    );
+};
+
+export default MiniCarousel;

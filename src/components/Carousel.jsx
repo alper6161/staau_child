@@ -3,7 +3,7 @@ import Glide from "@glidejs/glide";
 import book1 from "../assets/images/ex.jpg";
 import book2 from "../assets/images/ex2.jpg";
 import {Button} from "@mui/material";
-import {PlayCircle, RunCircleRounded, Watch} from "@mui/icons-material";
+import {PlayCircle} from "@mui/icons-material";
 
 
 const Carousel = () => {
