@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
-import Glide from "@glidejs/glide"; // Glide.js kütüphanesi
-
-// Yerel resimlerinizi ekleyin
+import Glide from "@glidejs/glide";
 import book1 from "../assets/images/ex.jpg";
 import book2 from "../assets/images/ex2.jpg";
 

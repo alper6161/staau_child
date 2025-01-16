@@ -39,8 +39,12 @@
     }
 
     .navbar-button {
-      color: #555;
-      margin-right: 0.5rem;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 50%;
+      background-color: #555;
+      margin-right: .5rem;
+      width: 2.5rem;
     }
   }
 }

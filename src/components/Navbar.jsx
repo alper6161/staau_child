@@ -1,5 +1,5 @@
 import React from "react";
-import { Autocomplete, TextField, IconButton } from "@mui/material";
+import {Autocomplete, TextField, IconButton, Button} from "@mui/material";
 import { Home, Phone, Info } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import UserMenu from "./UserMenu.jsx";
@@ -29,7 +29,6 @@ const Navbar = () => {
                         />
                     )}
                 />
-
                 <IconButton component={Link} to="/" className="navbar-button">
                     <Home />
                 </IconButton>
