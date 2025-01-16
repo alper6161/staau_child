@@ -3,7 +3,7 @@ import { Autocomplete, TextField, IconButton } from "@mui/material";
 import { Home, Phone, Info } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import UserMenu from "./UserMenu.jsx";
-import appIcon from "../assets/images/staau_icon.jpg";
+import appIcon from "../assets/images/staau_icon.png";
 
 const Navbar = () => {
     const options = ["Ali", "Veli", "Ayşe"];
