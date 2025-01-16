@@ -9,13 +9,19 @@ const Home = () => {
         setUser({ name: "Suat, This is a test for redux Zustand" });
     }, []);
 
-    return <div className="page">
-        <h1>Home Page</h1>
-        <div> {user?.name}</div>
-        <div>
+    return <div className="page home">
+        <div style={{flex: 2}}>
             <Carousel></Carousel>
         </div>
+        <div className="mini-carousel">
 
+        </div>
+        <div className="mini-carousel">
+
+        </div>
+        <div className="mini-carousel">
+
+        </div>
     </div>;
 };
 

@@ -1,12 +1,15 @@
 import React from "react";
-import {Autocomplete, TextField, IconButton, Button} from "@mui/material";
+import { Autocomplete, TextField, IconButton } from "@mui/material";
 import { Home, Phone, Info } from "@mui/icons-material";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import UserMenu from "./UserMenu.jsx";
 import appIcon from "../assets/images/staau_icon.png";
 
 const Navbar = () => {
     const options = ["Ali", "Veli", "Ayşe"];
+    const location = useLocation();
+
+    const isActive = (path) => location.pathname === path;
 
     return (
         <div className="navbar">
@@ -29,13 +32,25 @@ const Navbar = () => {
                         />
                     )}
                 />
-                <IconButton component={Link} to="/" className="navbar-button">
+                <IconButton
+                    component={Link}
+                    to="/"
+                    className={`navbar-button ${isActive("/") ? "active" : ""}`}
+                >
                     <Home />
                 </IconButton>
-                <IconButton component={Link} to="/about" className="navbar-button">
+                <IconButton
+                    component={Link}
+                    to="/about"
+                    className={`navbar-button ${isActive("/about") ? "active" : ""}`}
+                >
                     <Info />
                 </IconButton>
-                <IconButton component={Link} to="/contact" className="navbar-button">
+                <IconButton
+                    component={Link}
+                    to="/contact"
+                    className={`navbar-button ${isActive("/contact") ? "active" : ""}`}
+                >
                     <Phone />
                 </IconButton>
 
