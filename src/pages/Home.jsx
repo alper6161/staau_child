@@ -11,7 +11,7 @@ const Home = () => {
     }, []);
 
     return <div className="page home">
-        <div style={{flex: 2, marginBottom: '2rem'}}>
+        <div style={{marginBottom: '1rem'}}>
             <Carousel></Carousel>
         </div>
         <div className="mini-carousel">

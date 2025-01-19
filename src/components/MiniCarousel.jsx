@@ -6,31 +6,27 @@ import miniImg3 from "../assets/images/ex3.jpg";
 import miniImg4 from "../assets/images/ex4.jpg";
 import miniImg5 from "../assets/images/ex5.jpg";
 
-const MiniCarousel = ({id}) => {
+const MiniCarousel = ({ id, title }) => {
     useEffect(() => {
         const glide = new Glide(`#${id}`, {
             type: "carousel",
+            startAt: 0,
             perView: 5,
             focusAt: "center",
             gap: 10,
             breakpoints: {
-                1200: {
-                    perView: 4,
-                },
-                800: {
-                    perView: 3,
-                },
-                480: {
-                    perView: 2,
-                },
+                1200: { perView: 4 },
+                800: { perView: 3 },
+                480: { perView: 2 },
             },
         });
 
         glide.mount();
-    }, []);
+    }, [id]);
 
     return (
         <div id={id} className="mini-glide">
+            <h2>{title || "New Topics"}</h2>
             <div className="glide__track" data-glide-el="track">
                 <ul className="glide__slides">
                     <li className="glide__slide">
@@ -59,6 +55,11 @@ const MiniCarousel = ({id}) => {
                 <button className="glide__arrow glide__arrow--right" data-glide-dir=">">
                     »
                 </button>
+            </div>
+
+            {/* View More Link */}
+            <div className="view-more">
+                <a href="#">View More</a>
             </div>
         </div>
     );

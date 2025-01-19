@@ -10,6 +10,7 @@ const Carousel = () => {
     useEffect(() => {
         const glide = new Glide(".glide", {
             type: "carousel",
+            startAt: 0,
             perView: 1,
             focusAt: "center",
             breakpoints: {
@@ -60,7 +61,6 @@ const Carousel = () => {
             <div className="glide__bullets" data-glide-el="controls[nav]">
                 <button className="glide__bullet" data-glide-dir="=0"></button>
                 <button className="glide__bullet" data-glide-dir="=1"></button>
-                <button className="glide__bullet" data-glide-dir="=2"></button>
             </div>
         </div>
     );
