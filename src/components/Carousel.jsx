@@ -4,9 +4,12 @@ import book1 from "../assets/images/ex.jpg";
 import book2 from "../assets/images/ex2.jpg";
 import {Button} from "@mui/material";
 import {PlayCircle} from "@mui/icons-material";
+import {useNavigate} from "react-router-dom";
 
 
 const Carousel = () => {
+    const navigate = useNavigate();
+
     useEffect(() => {
         const glide = new Glide(".glide", {
             type: "carousel",
@@ -29,6 +32,11 @@ const Carousel = () => {
         glide.mount();
     }, []);
 
+    const handleClick = () => {
+        console.log('clicked');
+        navigate(`/player`);
+    }
+
     return (
         <div className={`glide`}>
             <div className="carousel-watch-button">
@@ -38,6 +46,7 @@ const Carousel = () => {
                     size="large"
                     sx={{ fontWeight: "bold" }}
                     startIcon={<PlayCircle className="mr-1" style={{fontSize: '2rem'}}/>}
+                    onClick={handleClick}
                 >
                     Watch
                 </Button>

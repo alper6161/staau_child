@@ -5,8 +5,10 @@ import miniImg2 from "../assets/images/ex2.jpg";
 import miniImg3 from "../assets/images/ex3.jpg";
 import miniImg4 from "../assets/images/ex4.jpg";
 import miniImg5 from "../assets/images/ex5.jpg";
+import {useNavigate} from "react-router-dom";
 
 const MiniCarousel = ({ id, title }) => {
+    const navigate = useNavigate();
     useEffect(() => {
         const glide = new Glide(`#${id}`, {
             type: "carousel",
@@ -24,12 +26,17 @@ const MiniCarousel = ({ id, title }) => {
         glide.mount();
     }, [id]);
 
+    const handleClick = () => {
+        console.log('clicked');
+        navigate(`/play/${id}`);
+    }
+
     return (
         <div id={id} className="mini-glide">
             <h2>{title || "New Topics"}</h2>
             <div className="glide__track" data-glide-el="track">
                 <ul className="glide__slides">
-                    <li className="glide__slide">
+                    <li className="glide__slide" onClick={handleClick}>
                         <img src={miniImg1} alt="Mini 1" />
                     </li>
                     <li className="glide__slide">
