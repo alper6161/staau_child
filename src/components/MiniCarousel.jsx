@@ -7,10 +7,11 @@ import miniImg4 from "../assets/images/ex4.jpg";
 import miniImg5 from "../assets/images/ex5.jpg";
 import {useNavigate} from "react-router-dom";
 
-const MiniCarousel = ({ id, title }) => {
+const MiniCarousel = ({ content, title }) => {
     const navigate = useNavigate();
     useEffect(() => {
-        const glide = new Glide(`#${id}`, {
+        if(!content || !content.length || !title) return;
+        const glide = new Glide(`#${title}`, {
             type: "carousel",
             startAt: 0,
             perView: 5,
@@ -23,8 +24,9 @@ const MiniCarousel = ({ id, title }) => {
             },
         });
 
-        glide.mount();
-    }, [id]);
+        console.log(content);
+        glide.mount(``);
+    }, [content,title]);
 
     const handleClick = () => {
         console.log('clicked');
@@ -32,25 +34,15 @@ const MiniCarousel = ({ id, title }) => {
     }
 
     return (
-        <div id={id} className="mini-glide">
+        <div id={title} className="mini-glide">
             <h2>{title || "New Topics"}</h2>
             <div className="glide__track" data-glide-el="track">
                 <ul className="glide__slides">
-                    <li className="glide__slide" onClick={handleClick}>
-                        <img src={miniImg1} alt="Mini 1" />
-                    </li>
-                    <li className="glide__slide">
-                        <img src={miniImg2} alt="Mini 2" />
-                    </li>
-                    <li className="glide__slide">
-                        <img src={miniImg3} alt="Mini 3" />
-                    </li>
-                    <li className="glide__slide">
-                        <img src={miniImg4} alt="Mini 4" />
-                    </li>
-                    <li className="glide__slide">
-                        <img src={miniImg5} alt="Mini 5" />
-                    </li>
+                    {content.map((detail) =>
+                        <li className="glide__slide" key={detail.id} onClick={() => handleClick(detail.url)}>
+                            <img src={detail.url} alt="img" />
+                        </li>
+                    )}
                 </ul>
             </div>
 

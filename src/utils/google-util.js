@@ -1,3 +1,5 @@
+import {fetchFilesFromServer} from "./api.js";
+
 const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
 const GOOGLE_API_URL = `https://www.googleapis.com/drive/v3/files`;
 
@@ -36,4 +38,10 @@ export const fetchImageFromDrive = async (fileId) => {
         console.error("Error fetching image:", error);
         return null;
     }
+};
+
+export const fetchImagesFromDrive = async (files) => {
+    fetchFilesFromServer(files).then((data) => {
+        console.log(data);
+    });
 };
