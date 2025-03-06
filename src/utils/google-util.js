@@ -33,15 +33,38 @@ export const fetchImageFromDrive = async (fileId) => {
         }
 
         const blob = await response.blob();
-        return URL.createObjectURL(blob);
+        return URL.createObjectURL(blob); // Resim URL'si döndürülüyor
     } catch (error) {
         console.error("Error fetching image:", error);
-        return null;
+        return null; // Hata olursa `null` döndür
     }
 };
 
+export const fetchImagesFromServer = async (fileIds) => {
+    const IMAGE_API_URL = `http://localhost:3000/fetch-images?files=${fileIds.join(",")}`;
+
+    try {
+        const response = await fetch(IMAGE_API_URL);
+        if (!response.ok) {
+            throw new Error(`Error fetching images: ${response.statusText}`);
+        }
+
+        const images = await response.json();
+        return images; // Base64 formatında döndürülen resimleri alır
+    } catch (error) {
+        console.error("Error fetching images:", error);
+        return [];
+    }
+};
+
+
 export const fetchImagesFromDrive = async (files) => {
-    fetchFilesFromServer(files).then((data) => {
-        console.log(data);
-    });
+    try {
+        const imagePromises = files.map((file) => fetchImageFromDrive(file.id));
+        const images = await Promise.all(imagePromises); // Tüm istekleri bekle
+        return images.filter(Boolean); // null değerleri temizle
+    } catch (error) {
+        console.error("Error fetching images:", error);
+        return []; // Hata durumunda boş dizi döndür
+    }
 };

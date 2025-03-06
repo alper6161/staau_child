@@ -1,17 +1,14 @@
 import React, { useEffect } from "react";
 import Glide from "@glidejs/glide";
-import miniImg1 from "../assets/images/ex.jpg";
-import miniImg2 from "../assets/images/ex2.jpg";
-import miniImg3 from "../assets/images/ex3.jpg";
-import miniImg4 from "../assets/images/ex4.jpg";
-import miniImg5 from "../assets/images/ex5.jpg";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const MiniCarousel = ({ content, title }) => {
+const MiniCarousel = ({ content = [], title }) => {
     const navigate = useNavigate();
+    const safeId = title ? title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") : `carousel-${Math.floor(Math.random() * 10000)}`;
+
     useEffect(() => {
-        if(!content || !content.length || !title) return;
-        const glide = new Glide(`#${title}`, {
+        if (!content.length) return;
+        const glide = new Glide(`#${safeId}`, {
             type: "carousel",
             startAt: 0,
             perView: 5,
@@ -24,29 +21,29 @@ const MiniCarousel = ({ content, title }) => {
             },
         });
 
-        console.log(content);
-        glide.mount(``);
-    }, [content,title]);
+        glide.mount();
+        return () => glide.destroy();
+    }, [content, safeId]);
 
-    const handleClick = () => {
-        console.log('clicked');
-        navigate(`/play/${id}`);
-    }
+    const handleClick = (id) => {
+        if (id) {
+            navigate(`/play/${id}`);
+        }
+    };
 
     return (
-        <div id={title} className="mini-glide">
-            <h2>{title || "New Topics"}</h2>
+        <div id={safeId} className="mini-glide">
+            {title && <h2>{title}</h2>}
             <div className="glide__track" data-glide-el="track">
                 <ul className="glide__slides">
-                    {content.map((detail) =>
-                        <li className="glide__slide" key={detail.id} onClick={() => handleClick(detail.url)}>
-                            <img src={detail.url} alt="img" />
+                    {content.map((detail) => (
+                        <li className="glide__slide" key={detail.id} onClick={() => handleClick(detail.id)}>
+                            <img src={detail.img} alt="img" />
                         </li>
-                    )}
+                    ))}
                 </ul>
             </div>
 
-            {/* Yön Okları */}
             <div className="glide__arrows" data-glide-el="controls">
                 <button className="glide__arrow glide__arrow--left" data-glide-dir="<">
                     «
@@ -56,7 +53,6 @@ const MiniCarousel = ({ content, title }) => {
                 </button>
             </div>
 
-            {/* View More Link */}
             <div className="view-more">
                 <a href="#">View More</a>
             </div>

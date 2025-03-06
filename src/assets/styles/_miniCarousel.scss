@@ -2,6 +2,7 @@
     position: relative;
     width: 100%;
     margin: 0 auto;
+    overflow: hidden;
 
     h2 {
         font-size: 1.5rem;
@@ -10,16 +11,26 @@
 
     .glide__track {
         overflow: hidden;
+        position: relative;
     }
 
     .glide__slides {
         display: flex;
         align-items: center;
+        flex-wrap: nowrap;
+        min-height: 200px; // Min yüksekliği sabit tutuyoruz
+    }
+
+    .glide__slide {
+        flex: 0 0 auto;
+        width: calc(100% / 5); // 5 öğeyi düzgün hizalamak için
+        min-width: 150px;
     }
 
     .glide__slide img {
         width: 100%;
-        height: 200px;
+        max-width: 100%;
+        height: auto;
         object-fit: cover;
         border-radius: 5px;
     }
